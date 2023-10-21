@@ -6,11 +6,14 @@
 //
 
 import UIKit
-
+  
 final class TaskListViewController: UIViewController {
+    
+    // MARK: - IBOutlets
     @IBOutlet var tableView: UITableView!
     @IBOutlet var dataProvider: DataProvider!
     
+    // MARK: - View's lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }

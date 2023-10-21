@@ -21,18 +21,18 @@ final class TaskManagerTests: XCTestCase {
     }
     
     func testInitTaskManagerWithZeroTasks() {
-        XCTAssertEqual(sut.taskCount, 0)
+        XCTAssertEqual(sut.tasksCount, 0)
     }
     
     func testInitTaskManagerWithZeroDoneTasks() {
-        XCTAssertEqual(sut.doneTaskCount, 0)
+        XCTAssertEqual(sut.doneTasksCount, 0)
     }
     
     func testAddTaskIncrementTaskCount() {
         let task = Task(title: "Foo")
         sut.add(task)
         
-        XCTAssertEqual(sut.taskCount, 1)
+        XCTAssertEqual(sut.tasksCount, 1)
     }
     
     func testAddAtIndexIsAddedTask() {
@@ -50,8 +50,8 @@ final class TaskManagerTests: XCTestCase {
         
         sut.checkTask(at: 0)
         
-        XCTAssertEqual(sut.taskCount, 0)
-        XCTAssertEqual(sut.doneTaskCount, 1)
+        XCTAssertEqual(sut.tasksCount, 0)
+        XCTAssertEqual(sut.doneTasksCount, 1)
     }
     
     func testCheckTaskRemoveFromTasks() {
@@ -86,8 +86,8 @@ final class TaskManagerTests: XCTestCase {
         
         sut.removeAll()
         
-        XCTAssertTrue(sut.taskCount == 0)
-        XCTAssertTrue(sut.doneTaskCount == 0)
+        XCTAssertTrue(sut.tasksCount == 0)
+        XCTAssertTrue(sut.doneTasksCount == 0)
     }
     
     func testAddingSameTaskDoesNotIncrementCount() {
@@ -96,6 +96,6 @@ final class TaskManagerTests: XCTestCase {
         sut.add(firstTask)
         sut.add(secondTask)
         
-        XCTAssertTrue(sut.taskCount == 1)
+        XCTAssertTrue(sut.tasksCount == 1)
     }
 }

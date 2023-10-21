@@ -21,6 +21,7 @@ struct Task {
     }
 }
 
+// MARK: - Equatable
 extension Task: Equatable {
     static func == (lhs: Task, rhs: Task) -> Bool {
         if 

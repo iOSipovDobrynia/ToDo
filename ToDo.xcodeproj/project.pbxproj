@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E34881CE2AE42094008628BC /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34881CD2AE42094008628BC /* DataProviderTests.swift */; };
+		E34881D12AE42752008628BC /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34881D02AE42752008628BC /* TaskCell.swift */; };
 		E3B317BF2ADEFFBB00E2F484 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B317BE2ADEFFBB00E2F484 /* AppDelegate.swift */; };
 		E3B317C12ADEFFBB00E2F484 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B317C02ADEFFBB00E2F484 /* SceneDelegate.swift */; };
 		E3B317C32ADEFFBB00E2F484 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B317C22ADEFFBB00E2F484 /* TaskListViewController.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E34881CD2AE42094008628BC /* DataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
+		E34881D02AE42752008628BC /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		E3B317BB2ADEFFBB00E2F484 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3B317BE2ADEFFBB00E2F484 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3B317C02ADEFFBB00E2F484 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E34881CF2AE42734008628BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E34881D02AE42752008628BC /* TaskCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E3B317B22ADEFFBB00E2F484 = {
 			isa = PBXGroup;
 			children = (
@@ -115,11 +127,12 @@
 		E3B317BD2ADEFFBB00E2F484 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				E34881CF2AE42734008628BC /* View */,
 				E3CA34252AE13CF900DFF4EE /* Services */,
 				E3B317F52ADF017C00E2F484 /* Model */,
-				E3B317F02ADF000300E2F484 /* App */,
 				E3B317EF2ADEFFF700E2F484 /* ViewControllers */,
 				E3B317EE2ADEFFEC00E2F484 /* Storyboards */,
+				E3B317F02ADF000300E2F484 /* App */,
 				E3B317F12ADF000A00E2F484 /* Resources */,
 			);
 			path = ToDo;
@@ -157,6 +170,7 @@
 		E3B317EF2ADEFFF700E2F484 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3CA342B2AE171BA00DFF4EE /* DataProvider.swift */,
 				E3B317C22ADEFFBB00E2F484 /* TaskListViewController.swift */,
 			);
 			path = ViewControllers;
@@ -210,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				E3CA34262AE13D0700DFF4EE /* TaskManager.swift */,
-				E3CA342B2AE171BA00DFF4EE /* DataProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -219,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				E3CA34292AE16B5F00DFF4EE /* TaskListViewControllerTests.swift */,
+				E34881CD2AE42094008628BC /* DataProviderTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -358,6 +372,7 @@
 				E3B317F72ADF018600E2F484 /* Task.swift in Sources */,
 				E3B317C32ADEFFBB00E2F484 /* TaskListViewController.swift in Sources */,
 				E3CA342C2AE171BA00DFF4EE /* DataProvider.swift in Sources */,
+				E34881D12AE42752008628BC /* TaskCell.swift in Sources */,
 				E3B317F92ADF04E000E2F484 /* Location.swift in Sources */,
 				E3B317BF2ADEFFBB00E2F484 /* AppDelegate.swift in Sources */,
 				E3B317C12ADEFFBB00E2F484 /* SceneDelegate.swift in Sources */,
@@ -370,6 +385,7 @@
 			files = (
 				E3B317F32ADF00DD00E2F484 /* TaskTests.swift in Sources */,
 				E3B317FB2ADF065100E2F484 /* LocationTests.swift in Sources */,
+				E34881CE2AE42094008628BC /* DataProviderTests.swift in Sources */,
 				E3CA34242AE13C9A00DFF4EE /* TaskManagerTests.swift in Sources */,
 				E3CA342A2AE16B5F00DFF4EE /* TaskListViewControllerTests.swift in Sources */,
 				E3B317D62ADEFFBD00E2F484 /* ToDoTests.swift in Sources */,

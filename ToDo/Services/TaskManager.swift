@@ -8,16 +8,20 @@
 import Foundation
 
 final class TaskManager {
-    var taskCount: Int {
+    
+    // MARK: - Public properties
+    var tasksCount: Int {
         tasks.count
     }
-    var doneTaskCount: Int {
+    var doneTasksCount: Int {
         doneTasks.count
     }
     
+    // MARK: - Private properties
     private var tasks: [Task] = []
     private var doneTasks: [Task] = []
     
+    // MARK: - Public methods
     func add(_ task: Task) {
         if !tasks.contains(task) {
             tasks.append(task)
