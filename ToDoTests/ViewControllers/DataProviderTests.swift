@@ -82,6 +82,32 @@ final class DataProviderTests: XCTestCase {
         
         XCTAssertTrue(mockTableView.cellIsDequeued)
     }
+    
+    func testCellForRowAtIndexSectionZeroCallsConfigure() {
+        tableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        
+        let task = Task(title: "Foo")
+        sut.taskManager?.add(task)
+        
+        tableView.reloadData()
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MockTaskCell
+        
+        XCTAssertEqual(task, cell.task)
+    }
+    
+    func testCellForRowAtIndexSectionOneCallsConfigure() {
+        tableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        
+        let task = Task(title: "Foo")
+        sut.taskManager?.add(task)
+        sut.taskManager?.checkTask(at: 0)
+        tableView.reloadData()
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MockTaskCell
+        
+        XCTAssertEqual(task, cell.task)
+    }
  
 }
 
@@ -92,6 +118,14 @@ extension DataProviderTests {
         override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
             cellIsDequeued = true
             return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        }
+    }
+    
+    class MockTaskCell: TaskCell {
+        var task: Task?
+        
+        override func configure(with task: Task) {
+            self.task = task
         }
     }
 }

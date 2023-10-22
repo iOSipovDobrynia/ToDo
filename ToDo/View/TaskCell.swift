@@ -7,5 +7,8 @@
 
 import UIKit
 
-final class TaskCell: UITableViewCell {
+class TaskCell: UITableViewCell {
+    func configure(with task: Task) {
+        
+    }
 }
