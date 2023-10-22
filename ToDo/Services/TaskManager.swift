@@ -41,6 +41,11 @@ final class TaskManager {
         doneTasks.append(doneTask)
     }
     
+    func uncheckTask(at index: Int){
+        let task = doneTasks.remove(at: 0)
+        tasks.append(task)
+    }
+    
     func removeAll() {
         tasks.removeAll()
         doneTasks.removeAll()

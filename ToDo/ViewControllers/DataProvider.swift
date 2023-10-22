@@ -14,7 +14,9 @@ final class DataProvider: NSObject {
 
 // MARK: - UITableViewDelegate
 extension DataProvider: UITableViewDelegate {
-     
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        indexPath.section == 0 ? "Done" : "Undone"
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -46,6 +48,17 @@ extension DataProvider: UITableViewDataSource {
         }
         cell.configure(with: task)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            taskManager?.checkTask(at: indexPath.row)
+        default:
+            taskManager?.uncheckTask(at: indexPath.row)
+        }
+        tableView.reloadData()
+ 
     }
      
 }

@@ -25,6 +25,7 @@ final class DataProviderTests: XCTestCase {
 
         tableView = controller.tableView
         tableView.dataSource = sut
+        tableView.delegate = sut
     }
 
     override func tearDownWithError() throws {
@@ -69,10 +70,7 @@ final class DataProviderTests: XCTestCase {
     }
     
     func testCellForRowAtIndexPathDequeuesCellFromTableView() {
-        let mockTableView = MockTableView()
-        mockTableView.dataSource = sut
-        
-        mockTableView.register(TaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        let mockTableView = MockTableView.mockTableView(with: sut)
         
         sut.taskManager?.add(Task(title: "Foo"))
         
@@ -84,31 +82,66 @@ final class DataProviderTests: XCTestCase {
     }
     
     func testCellForRowAtIndexSectionZeroCallsConfigure() {
-        tableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        let mockTableView = MockTableView.mockTableView(with: sut)
         
         let task = Task(title: "Foo")
         sut.taskManager?.add(task)
         
-        tableView.reloadData()
+        mockTableView.reloadData()
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MockTaskCell
+        let cell = mockTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! MockTaskCell
         
         XCTAssertEqual(task, cell.task)
     }
     
     func testCellForRowAtIndexSectionOneCallsConfigure() {
-        tableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+        let mockTableView = MockTableView.mockTableView(with: sut)
         
         let task = Task(title: "Foo")
+        let task2 = Task(title: "Baz")
+        sut.taskManager?.add(task)
+        sut.taskManager?.add(task2)
+        sut.taskManager?.checkTask(at: 0)
+        mockTableView.reloadData()
+        
+        let cell = mockTableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MockTaskCell
+        
+        XCTAssertEqual(task, cell.task)
+    }
+    
+    func testDeleteButtonTitleSectionZeroShowsDone() {
+        let buttonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(buttonTitle, "Done")
+    }
+    
+    func testDeleteButtonTitleSectionOneShowsUndone() {
+        let buttonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: IndexPath(row: 0, section: 1))
+        
+        XCTAssertEqual(buttonTitle, "Undone")
+    }
+    
+    func testChekingTaskChekingInTaskManager() {
+        let task = Task(title: "Foo ")
+        sut.taskManager?.add(task)
+        
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 0))
+        
+        XCTAssertEqual(sut.taskManager?.tasksCount, 0)
+        XCTAssertEqual(sut.taskManager?.doneTasksCount, 1)
+    }
+    
+    func testUnchekingTaskUnchekingInTaskManager() {
+        let task = Task(title: "Foo ")
         sut.taskManager?.add(task)
         sut.taskManager?.checkTask(at: 0)
         tableView.reloadData()
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! MockTaskCell
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: IndexPath(row: 0, section: 1))
         
-        XCTAssertEqual(task, cell.task)
+        XCTAssertEqual(sut.taskManager?.tasksCount, 1)
+        XCTAssertEqual(sut.taskManager?.doneTasksCount, 0)
     }
- 
 }
 
 extension DataProviderTests {
@@ -118,6 +151,13 @@ extension DataProviderTests {
         override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
             cellIsDequeued = true
             return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        }
+        
+        static func mockTableView(with dataSource: DataProvider) -> MockTableView {
+            let mockTableView = MockTableView(frame: CGRect(x: 0, y: 0, width: 358, height: 675))
+            mockTableView.dataSource = dataSource
+            mockTableView.register(MockTaskCell.self, forCellReuseIdentifier: String(describing: TaskCell.self))
+            return mockTableView
         }
     }
     
