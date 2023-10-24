@@ -24,7 +24,8 @@ class TaskCell: UITableViewCell {
     func configure(with task: Task, done: Bool = false) {
         if !done {
             titleLabel.text = task.title
-            dateLabel.text = dateFormatter.string(from: task.date)
+            let date = task.date
+            dateLabel.text = dateFormatter.string(from: date)
             locationLabel.text = task.location?.name
         } else {
             let attributedString = NSAttributedString(
