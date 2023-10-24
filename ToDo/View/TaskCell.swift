@@ -14,16 +14,29 @@ class TaskCell: UITableViewCell {
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
-    // MARK: - Public methods
-    func configure(with task: Task) {
-        titleLabel.text = task.title
-        
+    private var dateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
-        dateLabel.text = dateFormatter.string(from: task.date)
-        
-        if let locationName = task.location?.name {
-            locationLabel.text = locationName
+        return dateFormatter
+    }
+    
+    // MARK: - Public methods
+    func configure(with task: Task, done: Bool = false) {
+        if !done {
+            titleLabel.text = task.title
+            dateLabel.text = dateFormatter.string(from: task.date)
+            locationLabel.text = task.location?.name
+        } else {
+            let attributedString = NSAttributedString(
+                string: task.title,
+                attributes: [
+                    NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue
+                ]
+            )
+            
+            titleLabel.attributedText = attributedString
+            dateLabel = nil
+            locationLabel = nil
         }
     }
 }
