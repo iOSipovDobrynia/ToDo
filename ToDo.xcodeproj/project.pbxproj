@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E31B4D2D2AE922460072938A /* NewTaskViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B4D2C2AE922460072938A /* NewTaskViewControllerTests.swift */; };
+		E31B4D2F2AE922B30072938A /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B4D2E2AE922B30072938A /* NewTaskViewController.swift */; };
 		E327F6212AE7DB7B00BBEEC5 /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E327F6202AE7DB7B00BBEEC5 /* DetailViewControllerTests.swift */; };
 		E327F6232AE7DC1300BBEEC5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E327F6222AE7DC1300BBEEC5 /* DetailViewController.swift */; };
 		E34881CE2AE42094008628BC /* DataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34881CD2AE42094008628BC /* DataProviderTests.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E31B4D2C2AE922460072938A /* NewTaskViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewControllerTests.swift; sourceTree = "<group>"; };
+		E31B4D2E2AE922B30072938A /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		E327F6202AE7DB7B00BBEEC5 /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
 		E327F6222AE7DC1300BBEEC5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E34881CD2AE42094008628BC /* DataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderTests.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				E3CA342B2AE171BA00DFF4EE /* DataProvider.swift */,
 				E3B317C22ADEFFBB00E2F484 /* TaskListViewController.swift */,
 				E327F6222AE7DC1300BBEEC5 /* DetailViewController.swift */,
+				E31B4D2E2AE922B30072938A /* NewTaskViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				E3CA34292AE16B5F00DFF4EE /* TaskListViewControllerTests.swift */,
 				E34881CD2AE42094008628BC /* DataProviderTests.swift */,
 				E327F6202AE7DB7B00BBEEC5 /* DetailViewControllerTests.swift */,
+				E31B4D2C2AE922460072938A /* NewTaskViewControllerTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				E3B317C32ADEFFBB00E2F484 /* TaskListViewController.swift in Sources */,
 				E3CA342C2AE171BA00DFF4EE /* DataProvider.swift in Sources */,
 				E34881D12AE42752008628BC /* TaskCell.swift in Sources */,
+				E31B4D2F2AE922B30072938A /* NewTaskViewController.swift in Sources */,
 				E3B317F92ADF04E000E2F484 /* Location.swift in Sources */,
 				E3B317BF2ADEFFBB00E2F484 /* AppDelegate.swift in Sources */,
 				E3B317C12ADEFFBB00E2F484 /* SceneDelegate.swift in Sources */,
@@ -404,6 +411,7 @@
 				E3B317F32ADF00DD00E2F484 /* TaskTests.swift in Sources */,
 				E3B317FB2ADF065100E2F484 /* LocationTests.swift in Sources */,
 				E35718902AE5766B00E17715 /* TaskCellTests.swift in Sources */,
+				E31B4D2D2AE922460072938A /* NewTaskViewControllerTests.swift in Sources */,
 				E34881CE2AE42094008628BC /* DataProviderTests.swift in Sources */,
 				E3CA34242AE13C9A00DFF4EE /* TaskManagerTests.swift in Sources */,
 				E3CA342A2AE16B5F00DFF4EE /* TaskListViewControllerTests.swift in Sources */,

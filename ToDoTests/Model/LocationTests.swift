@@ -13,10 +13,10 @@ final class LocationTests: XCTestCase {
     func testInitSetsCoordinates() {
         let coordinates = CLLocation(latitude: 1, longitude: 2)
         
-        let location = Location(name: "Foo", coordinates: coordinates)
+        let location = Location(name: "Foo", coordinates: coordinates.coordinate)
         
-        XCTAssertEqual(coordinates.coordinate.longitude, location.coordinates?.coordinate.longitude)
-        XCTAssertEqual(coordinates.coordinate.latitude, location.coordinates?.coordinate.latitude)
+        XCTAssertEqual(coordinates.coordinate.longitude, location.coordinates?.longitude)
+        XCTAssertEqual(coordinates.coordinate.latitude, location.coordinates?.latitude)
     }
     
     func testInitSetsName() {

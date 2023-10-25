@@ -49,7 +49,7 @@ final class DetailViewControllerTests: XCTestCase {
     
     func setupTaskAndAppearanceTransition() {
         let coordinates = CLLocation(latitude: 54.74801923, longitude: 56.01103876)
-        let location = Location(name: "Baz", coordinates: coordinates)
+        let location = Location(name: "Baz", coordinates: coordinates.coordinate)
         let date = Date(timeIntervalSince1970: 1546300800)
         let task = Task(title: "Foo", description: "Bar", date: date, location: location)
         

@@ -10,9 +10,9 @@ import CoreLocation
 
 struct Location {
     let name: String
-    let coordinates: CLLocation?
+    let coordinates: CLLocationCoordinate2D?
     
-    init(name: String, coordinates: CLLocation? = nil) {
+    init(name: String, coordinates: CLLocationCoordinate2D? = nil) {
         self.name = name
         self.coordinates = coordinates
     }
@@ -21,7 +21,7 @@ struct Location {
 // MARK: - Equatable
 extension Location: Equatable {
     static func ==(lhs: Location, rhs: Location) -> Bool {
-        guard lhs.coordinates?.coordinate.latitude == rhs.coordinates?.coordinate.latitude && lhs.coordinates?.coordinate.longitude == lhs.coordinates?.coordinate.longitude && lhs.name == rhs.name else {return false}
+        guard lhs.coordinates?.latitude == rhs.coordinates?.latitude && lhs.coordinates?.longitude == lhs.coordinates?.longitude && lhs.name == rhs.name else {return false}
         return true
     }
 }

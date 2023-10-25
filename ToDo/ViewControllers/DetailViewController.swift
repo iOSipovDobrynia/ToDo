@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
         
         if let coordinates = task.location?.coordinates {
             let region = MKCoordinateRegion(
-                center: coordinates.coordinate,
+                center: coordinates,
                 latitudinalMeters: 100,
                 longitudinalMeters: 100
             )
