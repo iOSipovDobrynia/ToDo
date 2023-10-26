@@ -27,8 +27,6 @@ final class APIClientTests: XCTestCase {
     func userLogin() {
         let completionHandler = {(token: String?, error: Error?) in }
         sut.login(withName: "name", password: "%qwerty", completionHandler: completionHandler)
-        
-        
     }
     
     func testLoginUsesCorrectHost() {
@@ -39,6 +37,38 @@ final class APIClientTests: XCTestCase {
     func testLoginUsesCorrectPath() {
         userLogin()
         XCTAssertEqual(mockURLSession.urlComponents?.path, "/login")
+    }
+    
+    func testLoginUsesExpectedQueryParameters() {
+        userLogin()
+        
+        guard let queryItems = mockURLSession.urlComponents?.queryItems else {
+            XCTFail()
+            return
+        }
+        
+        let urlqueryItemName = URLQueryItem(name: "name", value: "name")
+        let urlqueryItemPassword = URLQueryItem(name: "password", value: "%qwerty")
+        
+        XCTAssertTrue(queryItems.contains(urlqueryItemName))
+        XCTAssertTrue(queryItems.contains(urlqueryItemPassword))
+    }
+    
+    func testSuccessfulLoginCreatesToken() {
+        let jsonDataStub = "{\"token\": \"tokenString\"}".data(using: .utf8)
+        mockURLSession = MockURLSession(data: jsonDataStub, urlResponse: nil, responseError: nil)
+        sut.urlSession = mockURLSession
+        
+        var caughtToken: String?
+        let tokenExpectation = expectation(description: "Token")
+        sut.login(withName: "login", password: "password") { token, _ in
+            caughtToken = token
+            
+            XCTAssertEqual(caughtToken, "tokenString")
+            tokenExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
     }
 
 }
