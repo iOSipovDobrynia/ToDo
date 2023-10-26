@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import ToDo
 
 final class NewTaskViewControllerTests: XCTestCase {
@@ -59,5 +60,28 @@ final class NewTaskViewControllerTests: XCTestCase {
         }
         
         XCTAssertTrue(actions.contains("save"))
+    }
+    
+    func testGeocoderFetchesCorrectCoordinate() {
+        let geocoderAnswer = expectation(description: "Geocoder answer")
+        
+        let addressString = "Уфа"
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { placemarks, error in
+            let placemark = placemarks?.first
+            let location = placemark?.location
+            guard
+                let latitude = location?.coordinate.latitude,
+                let longitude = location?.coordinate.longitude else {
+                XCTFail()
+                return
+            }
+            
+            XCTAssertEqual(latitude, 54.7373019)
+            XCTAssertEqual(longitude, 55.9722162)
+            geocoderAnswer.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
     }
 }
