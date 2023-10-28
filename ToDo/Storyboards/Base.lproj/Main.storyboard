@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v7P-zE-lpf">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J3R-83-yZc">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" id="P1D-fd-VJy" customClass="TaskCell" customModule="ToDo" customModuleProvider="target">
@@ -73,6 +73,13 @@
                             <constraint firstItem="J3R-83-yZc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sFO-Fv-9Xp"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VoF-Yw-YVy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Ft-8X-ebb">
+                            <connections>
+                                <action selector="addNewTask:" destination="BYZ-38-t0r" id="hsQ-vw-ohb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataProvider" destination="qj0-tS-Kpa" id="dkc-ki-1tg"/>
                         <outlet property="tableView" destination="J3R-83-yZc" id="lUe-nQ-WrP"/>
@@ -81,7 +88,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="qj0-tS-Kpa" customClass="DataProvider" customModule="ToDo" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="138" y="-17"/>
+            <point key="canvasLocation" x="1063.3587786259541" y="-17.605633802816904"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="eRZ-W6-Nzg">
@@ -138,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VRf-EY-PWd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216" y="-8"/>
+            <point key="canvasLocation" x="2141.2213740458014" y="-8.4507042253521139"/>
         </scene>
         <!--New Task View Controller-->
         <scene sceneID="kjP-dJ-odU">
@@ -214,7 +221,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydW-34-3MJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2259" y="-2"/>
+            <point key="canvasLocation" x="3185.4961832061067" y="-2.1126760563380285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RVc-Db-FbQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v7P-zE-lpf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0n3-Am-WCz">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qEJ-4D-Wik"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GnD-YO-jP2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.64122137404578" y="-17.605633802816904"/>
         </scene>
     </scenes>
     <resources>

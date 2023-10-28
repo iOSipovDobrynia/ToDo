@@ -17,4 +17,11 @@ final class TaskListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    // MARK: - IBActions
+    @IBAction func addNewTask(_ sender: UIBarButtonItem) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: NewTaskViewController.self)) {
+            present(vc, animated: true)
+        }
+    }
 }

@@ -70,6 +70,56 @@ final class APIClientTests: XCTestCase {
         
         waitForExpectations(timeout: 5)
     }
+    
+    func testLoginInvalidJsonReturnsError() {
+        mockURLSession = MockURLSession(data: Data(), urlResponse: nil, responseError: nil)
+        sut.urlSession = mockURLSession
+        
+        var caughtError: Error?
+        let errorExpectation = expectation(description: "error")
+        sut.login(withName: "login", password: "password") { _, error in
+            caughtError = error
+            
+            XCTAssertNotNil(caughtError)
+            errorExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+    }
+    
+    func testLoginWhenDataIsNilReturnsError() {
+        mockURLSession = MockURLSession(data: nil, urlResponse: nil, responseError: nil)
+        sut.urlSession = mockURLSession
+        
+        var caughtError: Error?
+        let errorExpectation = expectation(description: "error")
+        sut.login(withName: "login", password: "password") { _, error in
+            caughtError = error
+            
+            XCTAssertNotNil(caughtError)
+            errorExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+    }
+    
+    func testLoginWhenResponseErrorReturnsError() {
+        let jsonDataStub = "{\"token\": \"tokenString\"}".data(using: .utf8)
+        let serverError = NSError(domain: "Server error", code: 404, userInfo: nil)
+        mockURLSession = MockURLSession(data: jsonDataStub, urlResponse: nil, responseError: serverError)
+        sut.urlSession = mockURLSession
+        
+        var caughtError: Error?
+        let errorExpectation = expectation(description: "error")
+        sut.login(withName: "login", password: "password") { _, error in
+            caughtError = error
+            
+            XCTAssertEqual(caughtError as? NSError, serverError)
+            errorExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 5)
+    }
 
 }
 

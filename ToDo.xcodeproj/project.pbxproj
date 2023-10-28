@@ -126,6 +126,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E39C80A82AED6EEE00DE96E2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				E3B317D52ADEFFBD00E2F484 /* ToDoTests.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		E3B317B22ADEFFBB00E2F484 = {
 			isa = PBXGroup;
 			children = (
@@ -166,7 +174,7 @@
 				E357188E2AE5765100E17715 /* View */,
 				E3CA34282AE16B3C00DFF4EE /* ViewControllers */,
 				E3CA34222AE13C8000DFF4EE /* Services */,
-				E3B317D52ADEFFBD00E2F484 /* ToDoTests.swift */,
+				E39C80A82AED6EEE00DE96E2 /* App */,
 				E3B317F42ADF00F200E2F484 /* Model */,
 			);
 			path = ToDoTests;
