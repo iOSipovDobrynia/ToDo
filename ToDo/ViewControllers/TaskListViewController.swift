@@ -16,11 +16,13 @@ final class TaskListViewController: UIViewController {
     // MARK: - View's lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataProvider.taskManager = TaskManager()
     }
     
     // MARK: - IBActions
     @IBAction func addNewTask(_ sender: UIBarButtonItem) {
-        if let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: NewTaskViewController.self)) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: NewTaskViewController.self)) as? NewTaskViewController {
+            vc.taskManager = dataProvider.taskManager
             present(vc, animated: true)
         }
     }

@@ -11,6 +11,7 @@ import XCTest
 final class TaskListViewControllerTests: XCTestCase {
 
     var sut: TaskListViewController!
+    var newTaskVC: NewTaskViewController!
     
     override func setUp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -49,9 +50,7 @@ final class TaskListViewControllerTests: XCTestCase {
         XCTAssertEqual(target as? TaskListViewController, sut)
     }
     
-    func testAddNewTaskPresentsNewTaskVC() {
-        XCTAssertNil(sut.presentedViewController)
-        
+    func setupNewTaskVC() {
         guard
             let addButton = sut.navigationItem.rightBarButtonItem,
             let action = addButton.action else {
@@ -69,7 +68,17 @@ final class TaskListViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.presentedViewController)
         XCTAssertTrue(sut.presentedViewController is NewTaskViewController)
         
-        let newTaskVC = sut.presentedViewController as! NewTaskViewController
+        newTaskVC = sut.presentedViewController as? NewTaskViewController
+    }
+    
+    func testAddNewTaskPresentsNewTaskVC() {
+        setupNewTaskVC()
         XCTAssertNotNil(newTaskVC.addressTF)
+    }
+    
+    func testCharesSameTaskManagerWithsNewTaskVC() {
+        setupNewTaskVC()
+        XCTAssertNotNil(sut.dataProvider.taskManager)
+        XCTAssertTrue(newTaskVC.taskManager === sut.dataProvider.taskManager)
     }
 }
