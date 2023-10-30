@@ -19,10 +19,16 @@ final class TaskListViewController: UIViewController {
         dataProvider.taskManager = TaskManager()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     // MARK: - IBActions
     @IBAction func addNewTask(_ sender: UIBarButtonItem) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: String(describing: NewTaskViewController.self)) as? NewTaskViewController {
             vc.taskManager = dataProvider.taskManager
+            vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         }
     }

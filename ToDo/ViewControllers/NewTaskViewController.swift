@@ -48,9 +48,12 @@ class NewTaskViewController: UIViewController {
             
             let task = Task(title: titleString, description: descriptionString, date: date, location: location)
             self?.taskManager.add(task)
+            
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true)
+            }
         }
         
-        dismiss(animated: true)
     }
 }
 
