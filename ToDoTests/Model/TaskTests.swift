@@ -69,4 +69,14 @@ final class TaskTests: XCTestCase {
         
         XCTAssertEqual(task, createdTask)
     }
+    
+    func testCanBeSerializedIntoDict() {
+        let location = Location(name: "Baz")
+        let date = Date(timeIntervalSince1970: 10)
+        let task = Task(title: "Bar", description: "Foo", date: date, location: location)
+
+        let generatedTask = Task(dict: task.dict)
+        
+        XCTAssertEqual(task, generatedTask)
+    }
 }
