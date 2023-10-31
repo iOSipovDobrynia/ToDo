@@ -24,4 +24,17 @@ final class LocationTests: XCTestCase {
         
         XCTAssertEqual(location.name, "Foo")
     }
+    
+    func testCanBeCreatedFromPlistDict() {
+        let location = Location(name: "Baz", coordinates: CLLocationCoordinate2D(latitude: 10, longitude: 10))
+        
+        let dict: [String: Any] = [
+            "name": "Baz",
+            "latitude": 10.0,
+            "longitude" : 10.0
+        ]
+        let createdLocation = Location(dict: dict)
+        
+        XCTAssertEqual(location, createdLocation)
+    }
 }

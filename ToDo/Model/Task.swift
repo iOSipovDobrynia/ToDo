@@ -19,6 +19,18 @@ struct Task {
         self.date = date ?? Date()
         self.location = location
     }
+    
+    init?(dict: [String: Any]) {
+        title = dict["title"] as! String
+        description = dict["description"] as? String
+        date = dict["date"] as? Date ?? Date()
+        
+        if let locationDict = dict["location"] as? [String: Any] {
+            location = Location(dict: locationDict)
+        } else {
+            location = nil
+        }
+    }
 }
 
 // MARK: - Equatable

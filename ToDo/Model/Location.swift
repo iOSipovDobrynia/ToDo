@@ -16,6 +16,21 @@ struct Location {
         self.name = name
         self.coordinates = coordinates
     }
+    
+    init?(dict: [String: Any]) {
+        name = dict["name"] as! String
+        
+        if 
+            let latitude = dict["latitude"] as? Double,
+            let longitude = dict["longitude"] as? Double {
+            coordinates = CLLocationCoordinate2D(
+                latitude: latitude,
+                longitude: longitude
+            )
+        } else {
+            coordinates = nil
+        }
+    }
 }
 
 // MARK: - Equatable

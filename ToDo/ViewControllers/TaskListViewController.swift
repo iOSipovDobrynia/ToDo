@@ -17,6 +17,8 @@ final class TaskListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataProvider.taskManager = TaskManager()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showDetail(with:)), name: NSNotification.Name(rawValue: "didSelectRow notification"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,5 +33,20 @@ final class TaskListViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         }
+    }
+    
+    // MARK: - Methods
+    @objc
+    private func showDetail(with notification: Notification) {
+        guard 
+            let userInfo = notification.userInfo,
+            let task = userInfo["task"] as? Task,
+            let detailVC = storyboard?.instantiateViewController(withIdentifier: String(describing: DetailViewController.self)) as? DetailViewController else {
+            fatalError()
+        }
+        
+        detailVC.task = task
+        navigationController?.pushViewController(detailVC, animated: true)
+        modalPresentationStyle = .fullScreen
     }
 }

@@ -21,7 +21,7 @@ extension DataProvider: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let task = taskManager!.task(at: indexPath.row)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "DidSelectRow notification"), object: self, userInfo: ["task": task])
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didSelectRow notification"), object: self, userInfo: ["task": task])
         }
     }
 }
