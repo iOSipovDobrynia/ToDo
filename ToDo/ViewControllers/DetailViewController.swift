@@ -26,11 +26,7 @@ class DetailViewController: UIViewController {
         return dateFormatter
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        titleLabel.text = task.title
-//    }
-    
+    // MARK: - View's lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         titleLabel.text = task.title

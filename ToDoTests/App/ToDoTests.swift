@@ -18,12 +18,11 @@ final class ToDoTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testInitialViewControllerisTaskListViewController() {
+    func testInitialViewControllerIsTaskListViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let navigationVC = storyboard.instantiateInitialViewController() as! UINavigationController
         let rootVC = navigationVC.viewControllers.first as! TaskListViewController
         
         XCTAssertTrue(rootVC is TaskListViewController)
     }
-
 }

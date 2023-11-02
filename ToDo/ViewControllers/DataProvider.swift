@@ -8,6 +8,7 @@
 import UIKit
 
 final class DataProvider: NSObject {
+    
     // MARK: Public properties
     var taskManager: TaskManager?
 }

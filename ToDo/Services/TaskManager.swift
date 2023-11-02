@@ -31,6 +31,7 @@ final class TaskManager {
     private var tasks: [Task] = []
     private var doneTasks: [Task] = []
     
+    // MARK: - Initialization
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(save), name: UIApplication.willResignActiveNotification, object: nil)
         

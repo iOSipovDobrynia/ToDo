@@ -19,8 +19,11 @@ extension URLSession: URLSessionProtocol {
 }
 
 class APIClient {
+    
+    // MARK: - Public properties
     lazy var urlSession: URLSessionProtocol = URLSession.shared
     
+    // MARK: - Methods
     func login(withName name: String, password: String, completionHandler: @escaping(String?, Error?) -> Void ) {
         let allowedCharacters = CharacterSet.urlQueryAllowed
         guard
@@ -56,7 +59,6 @@ class APIClient {
                 print(error.localizedDescription)
                 completionHandler(nil, error)
             }
-            
         }.resume()
     }
 }

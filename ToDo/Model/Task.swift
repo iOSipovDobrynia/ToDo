@@ -8,6 +8,8 @@
 import Foundation
 
 struct Task {
+    
+    // MARK: - Public properties
     let title: String
     let description: String?
     let date: Date
@@ -27,6 +29,7 @@ struct Task {
         return dict
     }
     
+    // MARK: - Initialization
     init(title: String, description: String? = nil, date: Date? = nil, location: Location? = nil) {
         self.title = title
         self.description = description

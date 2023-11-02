@@ -9,6 +9,8 @@ import Foundation
 import CoreLocation
 
 struct Location {
+    
+    // MARK: - Public properties
     let name: String
     let coordinates: CLLocationCoordinate2D?
     
@@ -22,6 +24,7 @@ struct Location {
         return dict
     }
     
+    // MARK: - Initialization
     init(name: String, coordinates: CLLocationCoordinate2D? = nil) {
         self.name = name
         self.coordinates = coordinates
