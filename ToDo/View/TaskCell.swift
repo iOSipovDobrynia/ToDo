@@ -36,8 +36,8 @@ class TaskCell: UITableViewCell {
             )
             
             titleLabel.attributedText = attributedString
-            dateLabel = nil
-            locationLabel = nil
+            dateLabel.text = ""
+            locationLabel.text = ""
         }
     }
 }

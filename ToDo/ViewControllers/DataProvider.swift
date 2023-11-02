@@ -23,6 +23,11 @@ extension DataProvider: UITableViewDelegate {
             let task = taskManager!.task(at: indexPath.row)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didSelectRow notification"), object: self, userInfo: ["task": task])
         }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        "Section \(section)"
     }
 }
 
@@ -53,7 +58,7 @@ extension DataProvider: UITableViewDataSource {
         default:
             task = taskManager.doneTask(at: indexPath.row)
         }
-        cell.configure(with: task)
+        cell.configure(with: task, done: task.isDone)
         return cell
     }
     
@@ -65,7 +70,5 @@ extension DataProvider: UITableViewDataSource {
             taskManager?.uncheckTask(at: indexPath.row)
         }
         tableView.reloadData()
- 
     }
-     
 }

@@ -99,14 +99,14 @@ final class TaskCellTests: XCTestCase {
         XCTAssertEqual(cell.titleLabel.attributedText, attributedString)
     }
     
-    func testDoneTaskDateLabelIsNill() {
+    func testDoneTaskDateLabelTextEqualsEmptyString() {
         configureCellWithDoneTask()
-        XCTAssertNil(cell.dateLabel)
+        XCTAssertEqual(cell.dateLabel.text, "")
     }
     
-    func testDoneTaskLocationLabelIsNill() {
+    func testDoneTaskLocationLabelTextEqualsEmptyString() {
         configureCellWithDoneTask()
-        XCTAssertNil(cell.locationLabel)
+        XCTAssertEqual(cell.locationLabel.text, "")
     }
 }
 

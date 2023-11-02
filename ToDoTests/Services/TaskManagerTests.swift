@@ -72,6 +72,17 @@ final class TaskManagerTests: XCTestCase {
         XCTAssertEqual(returnedTask, secondTask)
     }
     
+    func testCheckTaskToggleIsDone() {
+        let task = Task(title: "Foo")
+        sut.add(task)
+        
+        sut.checkTask(at: 0)
+        
+        let returnedTask = sut.doneTask(at: 0)
+
+        XCTAssertEqual(returnedTask.isDone, !task.isDone)
+    }
+    
     func testDoneTaskAtReturnsCheckedTask() {
         let task = Task(title: "Foo")
         sut.add(task)

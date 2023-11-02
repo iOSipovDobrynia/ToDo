@@ -40,6 +40,12 @@ final class TaskTests: XCTestCase {
         XCTAssertNotNil(task.date)
     }
     
+    func testTaskInitWithIsDoneEqualsFalse() {
+        let task = Task(title: "Foo")
+        
+        XCTAssertEqual(task.isDone, false)
+    }
+    
     func testWhenGivenLocationSetsLocation() {
         let location = Location(name: "Foo")
         
